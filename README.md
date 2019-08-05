@@ -1,4 +1,5 @@
-"# app2019" 
-"# The-Community-Tree" 
+### Higher Diploma in Science in Web Technologies - Final Project 2019
+### The Community Tree - web application
 
-"# The-Community-Tree" 
+##### Used technologies: Node.js, MySQL, JSON, HTML, CSS, JAVASCRIPT, jQuery. 
+##### Code editor: Visual Studio Code
