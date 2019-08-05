@@ -1,0 +1,66 @@
+<% include ../partials/header %>
+
+    <div id="main_content">
+
+            <h1>All BeHelp posts:</h1>
+
+             <!-------- searching bar --------->
+            <form accept-charset="UTF-8" action="/search" method="post">
+                <input name="search" type="text" placeholder="Search..." />
+                <button class="search-buttons">Search</button>
+            </form>
+            <hr>
+
+            <!-------- sorting buttons --------->
+            <form  class="sort-button" accept-charset="UTF-8" action="/show-trusted-users" method="post">
+                <input name="/show-trusted-users" type="hidden" />
+                <button class="search-buttons">Show only trusted users</button>
+            </form>
+
+            <form class="sort-button" accept-charset="UTF-8" action="/sorting-by-county" method="post">
+                <input name="sorting-by-county" type="hidden" />
+                <button class="search-buttons">Sorting by County</button>
+            </form>
+
+            <form class="sort-button" accept-charset="UTF-8" action="/sorting-by-city" method="post">
+                <input name="sorting-by-city" type="hidden" />
+                <button class="search-buttons">Sorting by City</button>
+            </form>
+
+            <form class="sort-button" accept-charset="UTF-8" action="/sorting-by-new-date" method="post">
+                <input name="sorting-by-new-date" type="hidden" />
+                <button class="search-buttons">Sorting by last added posts</button>
+            </form>
+
+            <form class="sort-button" accept-charset="UTF-8" action="/sorting-by-old-date" method="post">
+                <input name="sorting-by-old-date" type="hidden" />
+                <button class="search-buttons">Sort by the oldest posts</button>
+            </form>
+            <hr>
+    
+
+<div id="main_beHelpAll">
+              <!-------- Show all beHelp posts --------->
+            
+            <% res1.forEach(function(behelp) { %>
+                
+                <hr class="hr">
+                <img class="trusted" src="/<%= behelp.photo %>">
+                <p><b>Added by:</b> <%=behelp.firstname%> <%=behelp.lastname%> (<%=behelp.username%>)</p>
+                <p><b>Date:</b> <%=behelp.Date%></p>
+                <p><b>Location:</b> <%=behelp.City%>, <%=behelp.County%></p>
+                <p><b>Description:</b><i>"<%=behelp.Description%>"</i></p>
+                <hr class="hr">
+                
+                <button class="button"><a href="/show1behelp/<%= behelp.IDbehelp %>"><b>Send message</b></a></button>
+                <button class="button"><a href="/add-report/<%= behelp.IDbehelp %>"><b>Report it</b></a></button>
+
+        <hr>        
+                
+    
+            <% }); %>
+            
+        </div>
+    </div>
+
+<% include ../partials/footer %>

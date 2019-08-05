@@ -1,0 +1,55 @@
+<% include ../partials/header %>
+
+<div id="main_content">
+        <h1>Report post</h1>
+        <p>If you believe that the post is incorrect, fill out the form below, please</p>
+     
+        <div class="one-post">
+                <% res1.forEach(function(behelp) { %>
+                    <hr class="hr">
+                    <p><b>Added by:</b> <%=behelp.firstname%> <%=behelp.lastname%> (<%=behelp.username%>)</p>
+                    <p><b>Date:</b> <%=behelp.Date%></p>
+                    <!-- <p><b>ID post:</b> <%=behelp.IDbehelp%></p> -->
+                    <p><b>Location:</b> <%=behelp.City%>, <%=behelp.County%></p>
+                    <p><b>Description:</b><i>"<%=behelp.Description%>"</i></p>
+                    <hr class="hr">
+            </div>
+
+    
+            <form accept-charset="UTF-8" action="/add-report" method="POST">
+ 
+                <input name="idpost" type="hidden" value="<%=behelp.IDbehelp%>">
+                <input name="username"  type="hidden" value="<%=behelp.username%>"/>
+                <input name="description" type="hidden" value="<%=behelp.Description%>"/>
+                <input name="table" type="hidden" value="behelp"/>
+              
+                <label for="date">Report Date:</label>
+                <input class="datePicker" name="date" type="date"><br>
+        
+                <label for="name">YOUR NAME:</label>
+                <input name="name" type="text" placeholder="Please enter your name here" pattern="^[a-zA-Z ]+$" title="Use only letters, please" required/><br>
+        
+                
+                <label for="description2">WHAT IS WRONG WITH THIS POST?</label>
+                <input class="input-message" name="description2" type="text" placeholder="Please enter your comment here:" required/>
+                <br>
+
+                <label for="robot">Are you Robot?</label><br>22+22=<br>
+				<input type="text" id="robot" name="robot" placeholder=" 30+10+4=", pattern="44", title="Try once more, please", required><br><br>
+
+                <button class="button">Send report</button>
+                </form>
+            <% }); %>
+        <hr class="hr"> 
+       
+</div>
+
+<% include ../partials/footer %>
+
+
+
+
+
+
+                  
+    

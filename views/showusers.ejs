@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+
+    <div id="main_content">
+        <h1>List of all registered users</h1>
+
+        <form accept-charset="UTF-8" action="/search-users" method="post">
+            <input name="search" type="text" placeholder="Search user" />
+            <button>Search</button>
+        </form>
+        <br>
+        <button class="button"><a href="/admin"><b>Back to dashboard</b></a></button>
+        
+        <hr>
+        <% res1.forEach(function(user) { %>
+
+            <p><b>Id:</b> <%=user.Id%></p>
+            <p><b>Username:</b> <%=user.username%></p>
+            <p><b>First name:</b> <%=user.firstname%></p>
+            <p><b>Last name:</b> <%=user.lastname%></p>
+            <p><b>Email:</b> <%=user.email%></p>
+            <p><b>Password:</b> <%=user.password%></p>
+            <p><b>Admin?:</b> <%=user.admin%></p>
+            <p><b>Trusted?:</b> <%=user.trusted%> <img src="/<%= user.photo %>"> </p>
+                
+            <button class="button"><a href="/deleteuser-admin/<%= user.Id %>" onclick="return confirm('Delete it? Are you sure?');"><b>Delete</b></a></button>
+            <button class="button"><a href="/edituser-admin/<%= user.Id %>" onclick="return confirm('Edite it? Are you sure?');"><b>Edit</b></a></button>
+            <hr>
+             
+        <% }); %>
+    </div>
+        
+<% include ../partials/footer %>

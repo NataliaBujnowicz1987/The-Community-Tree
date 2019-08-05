@@ -1,0 +1,65 @@
+<% include ../partials/header %>
+
+    <div id="main_content">
+
+            <h1>All NeedHelp posts:</h1>
+
+             <!-------- searching bar --------->
+            <form accept-charset="UTF-8" action="/search-needhelp" method="post">
+                <input name="search" type="text" placeholder="Search..." />
+                <button class="search-buttons">Search</button>
+            </form>
+            <hr>
+
+            <!-------- sorting buttons --------->
+            <form  class="sort-button" accept-charset="UTF-8" action="/show-trusted-users-needhelp" method="post">
+                <input name="/show-trusted-users-needhelp" type="hidden" />
+                <button class="search-buttons">Show only trusted users</button>
+            </form>
+
+            <form class="sort-button" accept-charset="UTF-8" action="/sorting-by-county-needhelp" method="post">
+                <input name="sorting-by-county-needhelp" type="hidden" />
+                <button class="search-buttons">Sorting by County</button>
+            </form>
+
+            <form class="sort-button" accept-charset="UTF-8" action="/sorting-by-city-needhelp" method="post">
+                <input name="sorting-by-city-needhelp" type="hidden" />
+                <button class="search-buttons">Sorting by City</button>
+            </form>
+
+            <form class="sort-button" accept-charset="UTF-8" action="/sorting-by-new-date-needhelp" method="post">
+                <input name="sorting-by-new-date-needhelp" type="hidden" />
+                <button class="search-buttons">Sorting by last added posts</button>
+            </form>
+
+            <form class="sort-button" accept-charset="UTF-8" action="/sorting-by-old-date-needhelp" method="post">
+                <input name="sorting-by-old-date-needhelp" type="hidden" />
+                <button class="search-buttons">Sort by the oldest posts</button>
+            </form>
+            <hr>
+    
+
+    <div id="main_beHelpAll">
+              <!-------- Show all needHelp posts --------->
+            
+            <% res1.forEach(function(needhelp) { %>
+                
+                <hr class="hr">
+                <img class="trusted" src="/<%= needhelp.photo %>">
+                <p><b>Added by:</b> <%=needhelp.firstname%> <%=needhelp.lastname%> (<%=needhelp.username%>)</p>
+                <p><b>Date:</b> <%=needhelp.Date%></p>
+                <p><b>Location:</b> <%=needhelp.City%>, <%=needhelp.County%></p>
+                <p><b>Description:</b><i>"<%=needhelp.Description%>"</i></p>
+                <hr class="hr">
+                
+                <button class="button"><a href="/show1needhelp/<%= needhelp.IDneedhelp %>"><b>Send message</b></a></button>
+                <button class="button"><a href="/add-report-needhelp/<%= needhelp.IDneedhelp %>"><b>Report it</b></a></button>
+
+        <hr>        
+                
+            <% }); %>
+            
+        </div>
+</div>
+
+<% include ../partials/footer %>

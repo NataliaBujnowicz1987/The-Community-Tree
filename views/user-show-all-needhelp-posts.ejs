@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+
+    <div id="main_content">
+
+        <div id="main_beHelpAll">
+            <h1>All yours NeedHelp posts</h1>
+            <h3>(sorted by added date)</h3>
+            <hr>
+            
+            <% res1.forEach(function(needhelp) { %>
+                <p><b>Id post:</b> <%=needhelp.IDneedhelp %> |  <b>Your ID:</b> <%=needhelp.Id%></p>
+                <p><b>Date:</b> <%=needhelp.Date%></p>
+                <p><b>County:</b> <%=needhelp.County%></p>
+                <p><b>City:</b> <%=needhelp.City%></p>
+                <p><b>Description:</b> <%=needhelp.Description%></p>
+        
+                <button class="button"><a href="/deleteneedhelp/<%= needhelp.IDneedhelp %>" onclick="return confirm('Delete it? Are you sure?');"><b>Delete</b></a></button>
+                <button class="button"><a href="/edit-needhelp/<%= needhelp.IDneedhelp %>" onclick="return confirm('Edit it? Are you sure?');"><b>Edit</b></a></button>
+               <hr>
+            <% }); %>
+          
+        </div>
+
+        <button class="button"><a href="/user">Back to dashboard panel</a></button>
+            
+    </div>
+
+<% include ../partials/footer %>

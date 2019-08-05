@@ -1,0 +1,259 @@
+<% include ../partials/header %>
+
+<div id="dashboard">
+
+     <div id="left-box"><p>Hello <%= user.username %></p>
+          <button id="left_addbehelp">Add beHelp</button>
+          <button id="left_addneedhelp">Add needHelp</button>
+          <button id="left_addreview">Add Review</button>
+          <button id="left_seeposts">See your posts</button>
+          <button id="left_messages">Messages</button>
+          <button id="left_contactadmin">Contact Admin</button>
+          <button id="left_myprofile">My Profile</button>
+          <button id="left_updateaccount">Upgrade account</button>
+          <br>
+          <button class="logout" id="left_logout">Logout</button>
+     </div>
+
+     <div id="right-box">
+
+          <div id="right_welcomescreeen">
+               <h3 class="white-header">Welcome screen</h3>
+               <hr class="hr2">
+               <p>Hello <%= user.firstname %>, we are glad you are here with us. You are now on the dashboard panel. You can add posts in the BeHelp, NeedHelp and Reviews sections here. You can view all the posts you've added and edit or delete them if necessary.</p>
+               <p>In the message section, you can contact other users. The My Profile tab contains all the data you have entered, you can make changes or delete your account. In addition, you can also earn the title of a trusted helper, so that you may help people with more sensitive tasks e.g shopping. More information on how to apply, you can find in the Upgrade Account tab.</p>
+               <p>Remember, everything associated with this application is free!</p>
+          </div>
+     
+          <div id="right_addbehelp">
+               <h3 class="white-header">Can you help? Add new post</h3>
+               <hr class="hr2">
+               <form accept-charset="UTF-8" action="/add-behelp" method="post">
+        
+                    <input name="id" type="hidden" value="<%=user.Id%>" required/>
+
+                    <label for="name">YOUR DETAILS: <span class="span"> <%= user.firstname %> <%= user.lastname %> (<%= user.username %>)</span></label><br>
+                  
+                    <input name="name" type="hidden" value="<%= user.username %>">
+                    <input name="name" type="hidden" value="<%= user.firstname %>">
+                    <input name="name" type="hidden" value="<%= user.lastname %>">
+                    <input class="datePicker" name="date" type="hidden">
+                        
+                    <label class="label" for="county">COUNTY:</label>
+                    <select class="select" name="county" required><br>
+                        <option>Select your County....</option>
+                        <option>Antrim</option>
+                        <option>Armagh</option>
+                        <option>Carlow</option>
+                        <option>Cavan</option>
+                        <option>Clare</option>
+                        <option>Cork</option>
+                        <option>Donegal</option>
+                        <option>Down</option>
+                        <option>Dublin</option>
+                        <option>Fermanagh</option>
+                        <option>Galway</option>
+                        <option>Kerry</option>
+                        <option>Kildare</option>
+                        <option>Kilkenny</option>
+                        <option>Laois</option>
+                        <option>Leitrim</option>
+                        <option>Limerick</option>
+                        <option>Londonderry</option>
+                        <option>Longford</option>
+                        <option>Louth</option>
+                        <option>Mayo</option>
+                        <option>Meath</option>
+                        <option>Monaghan</option>
+                        <option>Offaly</option>
+                        <option>Roscommon</option>
+                        <option>Sligo</option>
+                        <option>Tipperary</option>
+                        <option>Tyrone</option>
+                        <option>Waterford</option>
+                        <option>Westmeath</option>
+                        <option>Wexford</option>
+                        <option>Wicklow</option>
+                    </select><br>
+                    
+                    <label class="label" for="city">CITY:</label>
+                    <input class="input" name="city" type="text" placeholder="Where you can help?",  pattern="^[a-zA-Z ]+$", title="Use only letters, please" required/><br>
+                    
+                    <label class="label" for="description">DESCRIPTION:</label>
+                    <input class="input-message" name="description" type="text" placeholder="How can you help?", required/><br>
+                    
+                    <button class="button">ADD POST</button>
+                </form>
+          </div>
+
+          <div id="right_addneedhelp">
+               <h3 class="white-header">Do you need help? Add post here</h3>
+               <hr class="hr2">
+               <form accept-charset="UTF-8" action="/add-needhelp" method="post">
+        
+                    <input name="id" type="hidden" value="<%=user.Id%>" required/>
+
+                    <label for="name">YOUR DETAILS: <span class="span"> <%= user.firstname %> <%= user.lastname %> (<%= user.username %>)</span></label><br>
+                  
+                    <input name="name" type="hidden" value="<%= user.username %>">
+                    <input name="name" type="hidden" value="<%= user.firstname %>">
+                    <input name="name" type="hidden" value="<%= user.lastname %>">
+                    <input class="datePicker" name="date" type="hidden">
+                        
+                    <label class="label" for="county">COUNTY:</label>
+                    <select class="select" name="county" required><br>
+                        <option>Select your County....</option>
+                        <option>Antrim</option>
+                        <option>Armagh</option>
+                        <option>Carlow</option>
+                        <option>Cavan</option>
+                        <option>Clare</option>
+                        <option>Cork</option>
+                        <option>Donegal</option>
+                        <option>Down</option>
+                        <option>Dublin</option>
+                        <option>Fermanagh</option>
+                        <option>Galway</option>
+                        <option>Kerry</option>
+                        <option>Kildare</option>
+                        <option>Kilkenny</option>
+                        <option>Laois</option>
+                        <option>Leitrim</option>
+                        <option>Limerick</option>
+                        <option>Londonderry</option>
+                        <option>Longford</option>
+                        <option>Louth</option>
+                        <option>Mayo</option>
+                        <option>Meath</option>
+                        <option>Monaghan</option>
+                        <option>Offaly</option>
+                        <option>Roscommon</option>
+                        <option>Sligo</option>
+                        <option>Tipperary</option>
+                        <option>Tyrone</option>
+                        <option>Waterford</option>
+                        <option>Westmeath</option>
+                        <option>Wexford</option>
+                        <option>Wicklow</option>
+                    </select><br>
+                    
+                    <label class="label" for="city">CITY:</label>
+                    <input class="input" name="city" type="text" placeholder="Where you can help?",  pattern="^[a-zA-Z ]+$", title="Use only letters, please" required/><br>
+                    
+                    <label class="label" for="description">DESCRIPTION:</label>
+                    <input class="input-message" name="description" type="text" placeholder="How can you help?", required/><br>
+                    
+                    <button class="button">ADD POST</button>
+                      
+                </form>
+          </div>
+
+          <div id="right_addreview">
+               <h3 class="white-header">Did you help others or someone helped you?<br/>Tell us about it</h3>
+               <hr class="hr2">
+                    <form accept-charset="UTF-8" action="/add-review" method="POST">
+
+                         <label for="name">Your details: <span class="span"><%= user.firstname %> <%= user.lastname %> (<%= user.username %>)</span></label>
+                         <input name="name" type="hidden" value="<%= user.firstname %> <%= user.lastname %> (<%= user.username %>)"> 
+                     
+                         <input class="datePicker" name="date" type="hidden"><br>
+                         <br>
+                         <label for="description">Your review:</label>
+                         <textarea rows="4" cols="50" name="description" placeholder="Click here to add your feedback.." required/></textarea><br>
+                        
+                         <button class="button">Add Review</button>
+                    </form>
+          </div>
+
+          <div id="right_seeposts">
+               <h3 class="white-header">See all your post. Edit or delete them.</h3>
+               <hr class="hr2">
+               <button class='button'><a href='/user-allposts'><u>BeHelp</u> posts</a></button>  
+               <hr class="hr2">
+               <button class='button'><a href='/user-all-needhelp-posts'><u>NeedHelp</u> posts</a></button>  
+               <hr class="hr2">
+          </div>
+
+          <div id="right_messages">
+               <h3 class="white-header">Messages:</h3>
+               <hr class="hr2">
+               <button class="button"><a href="allmessages">Received messages</a></button>
+               <hr class="hr2"> 
+               <button class="button"><a href="sentmessages">Sent messages</a></button>
+               <hr class="hr2"> 
+          </div>
+
+          <div id="right_contactadmin">
+               <h3 class="white-header">Contact to Admin</h3>
+               <hr class="hr2">
+               <form accept-charset="UTF-8" action="/send-message" method="post">
+                    <input name="sender" type="hidden" value="<%= user.username %>">
+    
+                    <input name="senderID" type="hidden" value="<%= user.Id %>">
+    
+                    <label for="receiver"><b>Send to:</b> Admin </label><br><br>
+                    <input name="receiver" type="hidden" value="Admin">
+
+                    <input name="receiverID" type="hidden" value=1>
+
+                    <label for="Date">Date:</label>
+                    <input class="datePicker" name="Date" type="date"><br>
+
+                    <label for="message">Your message:</label>
+                    <input class="input-message" name="message" type="text" placeholder="Please enter your mesage here" required/><br>
+                    <br>    
+                    <button class="button">Send message</button>
+    
+                </form>  
+               
+          </div>
+
+ 
+          <div id="right_myprofile">
+               <h3 class="white-header">Here you can change your details:</h3>
+               <hr class="hr2">
+               <form accept-charset="UTF-8" action="/edituser/<%=user.Id%>" method="post">
+        
+                    <label class="label" for="username">Username:</label>
+                    <input class="input" name="username" type="text" value="<%=user.username%>" required/><br>
+                     
+                    <label class="label" for="firstname">First name:</label>
+                    <input class="input" name="firstname" type="text" value="<%=user.firstname%>" pattern="^[a-zA-Z ]+$" title="Use only letters, please" ><br>
+
+                    <label class="label" for="lastname">Last name:</label>
+                    <input class="input" name="lastname" type="text" value="<%=user.lastname%>" pattern="^[a-zA-Z ]+$" title="Use only letters, please" ><br>
+
+
+                    <label class="label" for="email">Email:</label>
+                    <input class="input" name="email" type="email" value="<%=user.email%>" required/><br>
+                        
+                    <input class="input" name="password" type="hidden" value="<%=user.password%>"/>
+                    <input name="admin" type="hidden" value="<%=user.admin%>"> 
+                  
+                    <button class="button"><a href="/edituser/<%= user.Id %>" onclick="return confirm('Edit it? Are you sure?');"><b>EDIT</b></a></button>
+                    <hr class="hr2">
+                    <h4 class="white-header">Click here if you want to delete your account</h4>
+                    <button class="button"><a href="/profile">My account details</a></button>
+                    
+          </div>
+
+          <div id="right_updateaccount">
+               <h3 class="white-header">How to become a trustworthy user?</h3>
+               <hr class="hr2">
+               <img class="user-logo-trusted" src="trusted.png" alt="trusted user logo">
+               <p>If you would like to receive the status of a trusted user. you have to answer a few additional questions and send us a confirmation of your address along with the scan of your ID (click this button). The entire process is dealt with in strictest confidence and all the documents are stored securely.  </p>
+              
+               <button class="button"><a href="/add-upgrade">Next step</a></button>
+          </div>
+
+          <div id="right_logout">
+               <h3 class="white-header">Goodbye <%= user.firstname %>! <br>Thank you that you been with us!</h3>
+               <hr class="hr2">
+               <br>
+               <button class="button"><a href="/logout">Log Out</a></button>
+                    
+          </div>
+     </div>
+</div>
+
+<% include ../partials/footer %>

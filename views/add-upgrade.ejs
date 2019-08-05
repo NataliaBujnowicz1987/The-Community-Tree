@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+
+    <div id="main_content">
+        <h1> UPGRADE YOUR ACCOUNT</h1>
+    
+        <form class="form" accept-charset="UTF-8" ref= "uploadForm" action="/add-upgrade" method="POST" enctype="multipart/form-data">
+               
+            <label class="label" for="username">YOUR USERNAME: <span class="span"><%=user.username%></span></label>
+            <input class="input"  name="username" type="hidden" value="<%=user.username%>" required><br>
+    
+            <label class="label" for="date">Date:</label>
+            <input class="datePicker" name="date" type="date"><br>
+    
+            <label class="label" for="Q1">Why do you want to help others?</label>
+            <input class="input-message" name="Q1" type="text" placeholder="Plaese enter your answer" required/><br>
+    
+            <label class="label" for="Q2">What experience do you have in helping others?</label>
+            <input class="input-message" name="Q2" type="text" placeholder="Plaese enter your answer" required/><br>
+    
+            <label class="label" for="Q3">Tell us something about yourself.</label>
+            <input class="input-message" name="Q3" type="text" placeholder="Plaese enter your answer" required/><br>
+    
+            <label class="label" for="imageFileJSON">Your ID/passport (.jpg, .png):</label>
+            <input type="file" name="imageFileJSON" pattern="[a-z0-9]+\.[a-z]{3,}$" title="Incorrect image format" required />
+    
+            <label class="label" for="imageFileJSON2">Address confirmation (.jpg, .png):</label>
+            <input type="file" name="imageFileJSON2" pattern="[a-z0-9]+\.[a-z]{3,}$" title="Incorrect image format" required/><br>
+          
+            <hr class="hr2">
+            <button class="button">Send your request</button>
+            <hr class="hr2">
+        </form>
+       
+    </div>
+
+<% include ../partials/footer %>

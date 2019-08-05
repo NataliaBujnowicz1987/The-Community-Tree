@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+   
+    <div id="main_content">
+            <form accept-charset="UTF-8" action="/send-message" method="post">
+                <label for="sender"><b>Your username:</b> <%= user.username %></label><br><br>
+                <input name="sender" type="hidden" value="<%= user.username %>">
+
+                <label for="senderID"><b>Your ID:</b> <%= user.Id %></label><br><br>
+                <input name="senderID" type="hidden" value="<%= user.Id %>">
+
+                <label for="receiverID"><b>Send to:</b> </label><br><br>
+                <input name="receiverID" type="hidden" value="<%= behelp.Id %>">
+                
+                <label for="message">Your message:</label>
+                <input class="input-message" name="message" type="text" placeholder="Please enter your mesage here" required/><br>
+                <br>    
+                <button class="button">Send message</button>
+
+            </form>  
+
+    </div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+   
+    <div id="main_content"> 
+        <h1>Edit user details:</h1>
+        <hr>
+
+        <% res1.forEach(function(user) {%> 
+        <form accept-charset="UTF-8" ref= "uploadForm" action="/edituser-admin/<%=user.Id%>" method="post" enctype="multipart/form-data">
+
+            <label for="username">Username:</label>
+            <input name="username" type="text" value="<%=user.username%>" required/><br>
+
+            <label for="firstname">First name:</label>
+            <input name="firstname" type="text" value="<%=user.firstname%>" pattern="^[a-zA-Z ]+$" title="Use only letters, please" /><br>
+
+            <label for="lastname">Last name:</label>
+            <input name="lastname" type="text" value="<%=user.lastname%>", pattern="^[a-zA-Z ]+$" title="Use only letters, please"/><br>
+                
+            <label for="email">Email:</label>
+            <input name="email" type="email" value="<%=user.email%>", required/><br>
+                
+            <label for="password">Password:</label>
+            <input name="password" type="text" value="<%=user.password%>", required/><br>
+            
+            <label for="admin">Admin:</label>
+            <input name="admin" type="text" value="<%=user.admin%>" pattern="^[0-1]\d*$" title="Use only 1-yes or 0-no, please" required/><br>
+
+            <label for="trusted">Trusted user:</label>
+            <input name="trusted" type="text" value="<%=user.trusted%>" pattern="^[0-1]\d*$", title="Use only 1-yes or 0-no, please" required/><br>
+        
+            <label for="imageFile">Click here to add trusted user mark</label>
+            <input type="file" name="imageFile" pattern="[a-z0-9]+\.[a-z]{3,}$" title="Incorrect image format"/>
+
+        <br>    
+        <button class="button">Edit user details</button>
+          
+        </form>
+        <% }); %>
+
+    </div> 
+
+<% include ../partials/footer %>

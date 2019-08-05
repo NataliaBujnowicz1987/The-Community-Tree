@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+   
+    <div id="main_content"> 
+        <h1>Edit user details:</h1>
+        <hr>
+
+        <% res1.forEach(function(user) {%> 
+        <form accept-charset="UTF-8" ref= "uploadForm" action="/edituser/<%=user.Id%>" method="post" enctype="multipart/form-data">
+
+            <label for="username">Username:</label>
+            <input name="username" type="text" value="<%=user.username%>" required/><br>
+
+            <label for="firstname">First name:</label>
+            <input name="firstname" type="text" value="<%=user.firstname%>" pattern="^[a-zA-Z ]+$" title="Use only letters, please" /><br>
+
+            <label for="lastname">Last name:</label>
+            <input name="lastname" type="text" value="<%=user.lastname%>", pattern="^[a-zA-Z ]+$" title="Use only letters, please"/><br>
+                
+            <label for="email">Email:</label>
+            <input name="email" type="email" value="<%=user.email%>", required/><br>
+
+        <br>    
+        <button class="button">Edit user details</button>
+          
+        </form>
+        <% }); %>
+    </div> 
+
+<% include ../partials/footer %>

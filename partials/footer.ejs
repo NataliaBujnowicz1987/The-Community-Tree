@@ -1,0 +1,54 @@
+
+ <aside>
+        <div id="logo"><img src="/logo.png" alt="The Community Tree - Logo"></div>
+    </aside>
+<footer>Developed by Natalia Bujnowicz | All rights reserved | The Community Tree</footer>
+
+
+
+<!------------------- JavaScript & jQuery -----------------------> 
+<script>
+
+// jQuery - kliknij menu pojawi sie nowy kontent
+    $(document).ready(function () {
+        $("#main_content div").eq(0).show(); // show first (0) div in box-right
+        $("#menu a").click(function () { //when click on button with id called show_
+            var id = $(this).attr('id'); //  attr() method sets or returns attributes and values of the selected elements
+            id = id.split('_'); // split() method is used to split a string into an array of substrings, and returns the new array
+        $("#main_content div").hide(); // hide all divs in box-right
+        $("#main_content #main_" + id[1]).fadeIn(); // and show only 1 box at the same time
+        });
+    });
+
+    
+// jQuery - dashboard 
+$(document).ready(function () {
+        $("#right-box div").eq(0).show(); // show first (0) div in box-right
+        $("#left-box button").click(function () { //when click on button with id called show_
+            var id = $(this).attr('id'); //  attr() method sets or returns attributes and values of the selected elements
+            id = id.split('_'); // split() method is used to split a string into an array of substrings, and returns the new array
+        $("#right-box div").hide(); // hide all divs in box-right
+        $("#right-box #right_" + id[1]).fadeIn(); // and show only 1 box at the same time
+        });
+    });
+
+// sets the current date in forms
+$(document).ready(function() {
+    var date = new Date();
+
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;       
+    $(".datePicker").attr("value", today);
+});
+
+
+</script>
+
+</body>
+</html>

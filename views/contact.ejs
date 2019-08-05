@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+
+<div id="main_content">
+        <h2>CONTACT US</h2>
+        <hr class="hr">
+            <h4>Have you got any question? <br>Send us a message and we'll respond as soon as possible.</h4>
+            <p>If you want to give us a feedback, you can do it without contact details (*).</p>
+
+
+        <form class="form" accept-charset="UTF-8" action="/contact" method="POST">
+            <label class="label" for="name">YOUR NAME:</label>
+            <input class="input"  name="name" type="text" placeholder="Plaese enter your name" pattern="^[a-zA-Z ]+$" title="Use only letters, please" required><br>
+
+            <label class="label" for="email">EMAIL*</label>
+            <input class="input"  name="email" type="email" placeholder="Plaese enter your email"/><br>
+
+            <label class="label" for="tel">PHONE NO:*</label>
+            <input class="input"  name="tel" type="tel" placeholder="Plaese enter your phone number" pattern = "^[0-9]+$" title="Enter correct number, please" /><br>
+
+            <label class="label" for="message">YOUR MESSAGE:</label>
+            <input class="input-message" name="message" type="text" placeholder="Plaese enter your message" required/><br>
+
+            <label class="label"for="robot">Enter the result of the match: 22+22= ?</label>
+            <input class="input" type="text" id="robot" name="robot" placeholder=" 30+10+4=", pattern="44", title="Try once more, please", required><br>
+            <hr>
+            <button class="button">Send your message</button>
+            <hr>
+        </form>
+</div>
+
+<% include ../partials/footer %>

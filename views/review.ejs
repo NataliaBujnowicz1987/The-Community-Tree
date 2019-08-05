@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+
+    <div id="main_content">
+        <h2>REVIEWS</h2>
+            <h3>(if you want to add your feedback, please login)</h3>
+        <hr>
+        <div id="review_box">
+            <hr class="hr">
+            <% reviews.forEach(function(reviews) { %>
+                <p>Name: <%-reviews.name%>
+                <span class="review-date">Date: <%-reviews.date%></span></p>
+                <p><%-reviews.description%></p>
+                <hr class="hr">
+        <% }); %> 
+        </div>
+    
+    </div>
+
+<% include ../partials/footer %>

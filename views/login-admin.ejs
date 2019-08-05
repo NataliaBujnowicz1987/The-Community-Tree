@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+
+    <div id="main_content">
+        <h1 class="admin_only">Login Admin Only</h1>
+        <hr class="hr">
+
+        <!-- show messages that come back with authentication -->
+        <% if (message.length > 0) { %>
+        <div class="message"><%= message %></div>
+        <% } %>
+
+        <!-- LOGIN-ADMIN FORM -->
+
+        <form action="/login-admin" method="post">
+           
+            <label class="admin_only">Admin:</label>
+            <input class="input" type="text" name="username">
+            <br>
+            <label class="admin_only">Password:</label>
+            <input class="input" type="password" name="password">
+            <br>
+            <br>
+            <button type="submit" class="button">Login</button>
+           
+        </form>
+        <hr class="hr">
+        
+    </div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+
+    <div id="main_content">
+        <h1>Your account details</h1>
+            <p>
+                <strong>Id: </strong><%= user.Id %><br>
+                <strong>username: </strong><%= user.username %><br>
+                <strong>first name: </strong><%= user.firstname %><br>
+                <strong>last name: </strong><%= user.lastname %><br>
+                <strong>email: </strong><%= user.email %><br>
+                <strong>password: </strong><%= user.password %><br>
+                <strong>trusted status? </strong><%= user.trusted %><br>
+            </p>
+
+           <!-- temporary solution to delete account directly by the user -->
+            <form accept-charset="UTF-8" action="/send-message" method="post">
+                <input name="sender" type="hidden" value="<%= user.username %>">
+                <input name="senderID" type="hidden" value="<%= user.Id %>">
+                <input name="receiver" type="hidden" value="Admin">
+                <input name="receiverID" type="hidden" value=1>
+                <input class="datePicker" name="Date" type="hidden">
+                <input class="input-message" name="message" type="hidden" value="Delete my account and all data from application, please. User ID: <%= user.Id %>" required/>
+                <hr>
+                <p>If you want to delete your account, press this button.<br> Your account will be deleted within 24h.<br> If you change your mind, contact with admin as soon as possible.</p>
+               
+                <button class="red-button"onclick="return confirm('Delete it? Are you sure?');"><b>DELETE ACCOUNT</b></button>
+            </form>  
+            
+            <hr class="hr">
+            <button class="button"><a href="/user">Back to Dashboard Panel</a></button><br>
+            <button class="button"><a href="/">Back to Home Page</a></button><br>
+            <hr class="hr">
+            <button class="button"><a href="/logout">Logout</a></button>
+            <hr class="hr">
+    </div>
+     
+<% include ../partials/footer %>

@@ -1,0 +1,40 @@
+<% include ../partials/header %>
+
+    <div id="main_content">
+        <h1>Received messages</h1>
+        <hr class="hr">
+
+        <% res1.forEach(function(message) { %>
+            <!-- <p>Id message: <%=message.Id%></p> --> 
+            <!-- <p>Sender ID: <%=message.senderID%></p> --> 
+            <!-- <p>Receiver ID: <%=message.receiverID%></p>  --> 
+
+            <p><b>From:</b> <span class="span"><%=message.sender%></span></p>
+            <p><b>Date:</b> <span class="span"><%=message.Date%></span></p>
+            <p><b>Message:</b> <span class="span input-message"><%=message.message%></span></p>
+        <hr>
+        
+        <form accept-charset="UTF-8" action="/send-message" method="post">
+         
+            <input name="sender" type="hidden" value="<%= user.username %>">
+            <input name="senderID" type="hidden" value="<%= user.Id %>">
+            <input name="receiver" type="hidden" value="<%=message.sender %>">
+            <input name="receiverID" type="hidden" value="<%=message.senderID %>">
+         
+            <label for="Date">Date:</label>
+            <input class="datePicker" name="Date" type="date"><br>
+
+            <label for="message"><b>Your answer:</b></label>
+            <input class="input-message" name="message" type="text" placeholder="Please enter your mesage here" required/><br>
+            <br>    
+
+            <button class="button" onclick="return confirm('Message will be send');">Send message</button>
+           
+        </form>  
+        
+        <hr class="hr">
+        <% }); %>
+
+    </div>
+        
+<% include ../partials/footer %>

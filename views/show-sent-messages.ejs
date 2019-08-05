@@ -1,0 +1,25 @@
+<% include ../partials/header %>
+
+    <div id="main_content">
+        <h1>Sent messages</h1>
+        <hr class="hr">
+
+        <% res1.forEach(function(message) { %>
+            <!-- <p>Id message: <%=message.Id%></p> --> 
+            <!-- <p>Sender ID: <%=message.senderID%></p> --> 
+      
+            <p><b>From:</b> <span class="span"><%=message.sender%></span></p>
+            <p><b>To:</b> <span class="span"><%=message.receiver%></span></p>
+            <p><b>Date:</b> <span class="span"><%=message.Date%></span></p>
+            <p><b>Message:</b> <span class="span"><%=message.message%></span></p>
+
+            <button class="button"><a href="/deletemessage/<%=message.Id%>" onclick="return confirm('Delete it? Are you sure?');"><b>Delete</b></a></button>
+        <br>
+        <hr>
+
+        <hr class="hr">
+        <% }); %>
+
+    </div>
+        
+<% include ../partials/footer %>

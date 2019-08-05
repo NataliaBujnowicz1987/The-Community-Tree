@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+
+<div id="main_content">
+    <h1>Edit review</h1>
+        <% res.forEach(function(review) { %>
+   
+        <form accept-charset="UTF-8" action="/editreview/<%= review.id %>" method="POST">
+         
+            <label for="date"><b>Username:</b> <%= review.name %></label>
+            <br><br>
+
+            <label for="date"><b>Added Date:</b> <%= review.date %></label>
+            <br><br>
+
+            <label for="description"><b>Review:</b></label>
+            <input class="input-message" name="description" type="text" value="<%= review.description %>" required/>
+            <br><br>
+            <button class="button">Update</button>
+        </form>      
+        <% }); %>
+    
+</div>
+
+<% include ../partials/footer %>

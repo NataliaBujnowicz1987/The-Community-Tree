@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+
+    <div id="main_content">
+
+        <div id="main_beHelpAll">
+            <h1>Show All BeHelp posts</h1>
+            
+            <hr class="hr">
+            <% res1.forEach(function(behelp) { %>
+                <p><b>Id:</b> <%=behelp.IDbehelp %></p>
+                <p><b>Id user:</b> <%=behelp.Id%></p>
+                <p><b>Username:</b> <%=behelp.username%></p>
+                <p><b>Email:</b> <%=behelp.email%></p>
+                <p><b>Date:</b> <%=behelp.Date%></p>
+                <p><b>County</b>: <%=behelp.County%></p>
+                <p><b>City:</b> <%=behelp.City%></p>
+                <p><b>Description:</b> <%=behelp.Description%></p>
+                <hr>
+                <button class="button"><a href="/deletebehelp-admin/<%= behelp.IDbehelp %>" onclick="return confirm('Delete it? Are you sure?');"><b>Delete</b></a></button>
+                <button class="button"><a href="/edit-behelp-admin/<%= behelp.IDbehelp %>" onclick="return confirm('Edite it? Are you sure?');"><b>Edit</b></a></button>
+                <hr>
+            <hr class="hr">
+            <% }); %>
+        </div>
+            
+    </div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,67 @@
+<% include ../partials/header %>
+   
+<div id="main_content">
+    <h1>Add NeedHelp post</h1>
+    <hr class="hr">
+    
+    <form accept-charset="UTF-8" action="/add-needhelp" method="post">
+        
+        <input name="username" type="hidden" value="<%= user.username %>">
+        <input name="username" type="hidden" value="<%= user.firstname %>">
+        <input name="username" type="hidden" value="<%= user.lastname %>">
+        <input name="id" type="hidden" value=" <%= user.Id %>">
+       
+        <label for="date">Date:</label>
+        <input class="datePicker" name="date" type="date"><br>
+        
+        <label for="county">County</label>
+        <select class="select" name="county" required><br>
+            <option>Select your County....</option>
+            <option>Antrim</option>
+            <option>Armagh</option>
+            <option>Carlow</option>
+            <option>Cavan</option>
+            <option>Clare</option>
+            <option>Cork</option>
+            <option>Donegal</option>
+            <option>Down</option>
+            <option>Dublin</option>
+            <option>Fermanagh</option>
+            <option>Galway</option>
+            <option>Kerry</option>
+            <option>Kildare</option>
+            <option>Kilkenny</option>
+            <option>Laois</option>
+            <option>Leitrim</option>
+            <option>Limerick</option>
+            <option>Londonderry</option>
+            <option>Longford</option>
+            <option>Louth</option>
+            <option>Mayo</option>
+            <option>Meath</option>
+            <option>Monaghan</option>
+            <option>Offaly</option>
+            <option>Roscommon</option>
+            <option>Sligo</option>
+            <option>Tipperary</option>
+            <option>Tyrone</option>
+            <option>Waterford</option>
+            <option>Westmeath</option>
+            <option>Wexford</option>
+            <option>Wicklow</option>
+        </select><br>
+        
+        <label for="city">City:</label>
+        <input name="city" type="text" placeholder="Where you can help?",  pattern="^[a-zA-Z ]+$", title="Use only letters, please" required/><br>
+        
+        <label for="description">Description:</label>
+        <input name="description" type="text" placeholder="When did you been there?", required/><br>
+        <br>    
+        <button class="button">Add New Post</button>
+          
+    </form>
+
+</div>
+
+
+<% include ../partials/footer %>

@@ -1,0 +1,23 @@
+[
+     {
+          "id": 3,
+          "name": "Marie",
+          "email": "",
+          "tel": "0892479676",
+          "message": "Hi, I would like to receive more information about this app, please. I leave my contact details. Thanks!"
+     },
+     {
+          "id": 4,
+          "name": "Michael",
+          "email": "",
+          "tel": "",
+          "message": "This app is cool! I really like it!"
+     },
+     {
+          "id": 5,
+          "name": "tester",
+          "email": "tester@gmail.com",
+          "tel": "123456789",
+          "message": "test"
+     }
+]

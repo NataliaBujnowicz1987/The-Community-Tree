@@ -1,0 +1,161 @@
+<% include ../partials/header %>
+
+<div id="dashboard">
+     <div id="left-box"><p>Hello <%= user.username %></p>
+          <button id="left_allusers">All Users</button>
+          <button id="left_allposts">All Posts</button>
+          <button id="left_allreviews">All Reviews</button>
+          <button id="left_messages">Messages</button>
+          <button id="left_contactmessages">Contact Form</button>
+          <button id="left_checkreport">Check Report</button>
+          <button id="left_myprofile">My Profile</button>
+          <button id="left_updateaccount">Check Upgrade Account</button>
+          <br>
+          <button id="left_logout">Logout</button>
+     </div>
+
+     <div id="right-box">
+          <div id="right_welcomescreeen">
+               <h3 class="white-header">Welcome screen</h3>
+               <hr class="hr2">
+               <p>Hello <%= user.username %> we are glad you are here with us. You are now on the dashboard panel. You can see all users, posts, reviews, report and edit or delete them if necessary. You can also add posts in the BeHelp, NeedHelp and Reviews sections if you need.</p>
+               <p>In the Message section, you can see all received and sent message. Contact Form contains messages was send from Contact Page. In Check Report tab you can see all report about incorrect or spam posts. Check it regulary and decide if the post should be remove -  If you decide delete it, inform about it the author of the post.</p>
+               <p>The My Profile tab contains the data you have entered during registration process. In addition, in Check Update Account tab you have access to all application sent by users who wants to earn the title of a trusted helper, so that you may help people with more sensitive tasks e.g shopping. Check it carefully, if you decide that user is trusted you can add the trusted user status in All Users section (edit user).</p>
+          </div>
+
+          <div id="right_allusers">
+               <h3 class="white-header">List of all users:</h3>
+               <hr class="hr2">
+               <button class="button"><a href="/allusers">All users</a></button>
+               <hr class="hr2">
+          </div>
+
+          <div id="right_allposts">
+               <h3 class="white-header">List of all posts</h3>
+               <hr class="hr2">
+               <button class='button'><a href='/admin-allbehelp'><u>BeHelp</u> posts</a></button> 
+               <br> 
+               <hr>
+               <br> 
+               <button class='button'><a href='/admin-allneedhelp'><u>NeedHelp </u>posts</a></button>  
+               <hr class="hr2">
+            
+          </div>
+
+          <div id="right_allreviews">
+               <h3 class="white-header">All reviews</h3>
+               <hr class="hr2">
+               <button class='button'><a href='/add-review'>Add new review</a></button>  
+    
+                    <% reviews.forEach(function(reviews) { %>
+                    <hr class="hr2">
+                         <p><b>Id:</b> <%-reviews.id%></p>
+                         <p><b>Name:</b> <%-reviews.name%></p>
+                         <p><b>Date:</b> <%-reviews.date%></p>
+                         <p><b>Review:</b> <%-reviews.description%></p>
+
+                         <button class="button"><a href="/deletereview/<%= reviews.id%>" onclick="return confirm('Delete it? Are you sure?');"> Delete</a></button>
+                        
+                    <% }); %>  
+                    <hr class="hr2">
+          </div>
+
+          <div id="right_messages">
+               <h3 class="white-header">Messages</h3>
+               <hr class="hr2">
+               <button class="button"><a href="allmessages">Received messages</a></button>
+               <hr class="hr2">
+               <button class="button"><a href="sentmessages">Sent messages</a></button>
+               <hr class="hr2"> 
+          </div>       
+     
+          <div id="right_contactmessages">
+               <h3 class="white-header">Contact Form Messages</h3>
+               <hr class="hr2">
+               <% contact.forEach(function(contact) { %>
+                    <p><b></b>ID:</b> <%-contact.id%></p>
+                    <p><b>Name:</b> <%-contact.name%></p>
+                    <p><b>Tel:</b> <%-contact.tel%></p>
+                    <p><b>Email:</b> <%-contact.email%></p>
+                    <p><b>Message:</b> <%-contact.message%></p>
+                    <button class="button"><a href="/deletecontact/<%- contact.id%>" onclick="return confirm('Delete it? Are you sure?');"> Delete</a></button>
+               <hr class="hr2">
+               <% }); %> 
+          </div> 
+
+          <div id="right_checkreport">
+               <h3 class="white-header">Reported Posts</h3>
+               <hr class="hr2">
+                    <% report.forEach(function(report) { %>
+                         <h3 class="white-header"><u>Post details:</u></h3>
+                         <p><b>Report ID:</b> <%-report.id%></p>
+                         <p><b>Post ID:</b>  <%-report.idpost%></p>
+                         <p><b>Table:</b>  <%-report.table%></p>
+                         <p><b>Username:</b> <%-report.username%></p>
+                         <p><b>Description:</b> <%-report.description%></p>
+                         
+                         <h3 class="white-header"><u>Report details:</u></h3>
+                         <p><b>Date:</b> <%-report.date%></p>
+                         <p><b>Your name:</b> <%-report.name%></p>
+                         <p><b>What is wrong?</b> <%-report.description2%></p>
+                         <hr>
+                         <button class="button"><a href="/deletereport/<%- report.id%>" onclick="return confirm('Delete it? Are you sure?');"> Delete</a></button>
+                         <hr>
+                    <hr class="hr2">
+                    <% }); %>  
+               </div>
+
+          <div id="right_myprofile">
+               <h3 class="white-header">Your profile details</h3>
+               <hr class="hr2">
+               <form accept-charset="UTF-8" action="/edituser/<%=user.Id%>" method="post">
+        
+                    <label class="label" for="username">Username:</label>
+                    <input class="input" name="username" type="text" value="<%=user.username%>" required/><br>
+                     
+                    <label class="label" for="firstname">First name:</label>
+                    <input class="input" name="firstname" type="text" value="<%=user.firstname%>" pattern="^[a-zA-Z ]+$" title="Use only letters, please" ><br>
+
+                    <label class="label" for="lastname">Last name:</label>
+                    <input class="input" name="lastname" type="text" value="<%=user.lastname%>" pattern="^[a-zA-Z ]+$" title="Use only letters, please" ><br>
+
+
+                    <label class="label" for="email">Email:</label>
+                    <input class="input" name="email" type="email" value="<%=user.email%>" required/><br>
+                        
+                    <input class="input" name="password" type="hidden" value="<%=user.password%>"/>
+                    <input name="admin" type="hidden" value="<%=user.admin%>"> 
+                  
+                    <button class="button"><a href="/edituser/<%= user.Id %>" onclick="return confirm('Edit it? Are you sure?');"><b>EDIT</b></a></button>
+                    <hr class="hr2">
+          </div>
+
+          <div id="right_updateaccount">
+               <h3 class="white-header">Trusted users documentations</h3>
+
+               <% upgrade.forEach(function(upgrade) { %>
+                    <hr class="hr2">  
+                    <p><b>Id:</b> <%-upgrade.id%></p>
+                    <p><b>Username:</b> <%-upgrade.username%></p>
+                    <p><b>Date:</b> <%-upgrade.date%></p>
+                    <p><b>Question1:</b> <%-upgrade.Q1%></p>
+                    <p><b>Question2:</b> <%-upgrade.Q2%></p>
+                    <p><b>Question3:</b> <%-upgrade.Q3%></p>
+                    <p><b>Document1:</b></p> <img class="upgrade-doc" src="<%-upgrade.Doc1%>">
+                    <p><b>Document2:</b></p> <img class="upgrade-doc" src="<%-upgrade.Doc2%>">
+             
+                    <button class="button"><a href="/deleteupgrade/<%- upgrade.id%>" onclick="return confirm('Delete it? Are you sure?');"> Delete</a></button>
+               <% }); %>    
+               <hr class="hr2">  
+          
+          </div>
+
+          <div id="right_logout">
+               <h3 class="white-header">Goodbye <%= user.firstname %> (<%= user.username %> )! <br> Thank you that you been with us!</h3>
+               <hr class="hr2">  
+               <button class="button"><a href="/logout">Log Out</a></button>
+          </div>
+     </div>
+</div>
+
+<% include ../partials/footer %>

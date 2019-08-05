@@ -1,0 +1,21 @@
+<% include ../partials/header %>
+
+<div id="main_content">
+    <h1>Add your review</h1>
+
+        <form accept-charset="UTF-8" action="/add-review" method="POST">
+         
+            <label for="name">Your details: <%= user.firstname %> <%= user.lastname %></label><br>
+            <input name="name" type="hidden" value="<%= user.firstname %> <%= user.lastname %>"> 
+
+            <label for="date">Date:</label>
+            <input class="datePicker" name="date" type="date"><br>
+
+            <label for="description">Your review:</label>
+            <input name="description" type="text" placeholder="Plaese enter your review" required/>
+
+            <button>Add your review</button>
+        </form>
+</div>
+
+<% include ../partials/footer %>

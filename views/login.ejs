@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+
+    <div id="main_content">
+        <h1> Login</h1>
+        <hr class="hr">
+        <!-- show any messages that come back with authentication -->
+        <% if (message.length > 0) { %>
+        <div class="message"><%= message %></div>
+        <% } %>
+
+        <!-- LOGIN FORM -->
+
+        <form class="form" action="/login" method="post">
+           
+            <label class="label">USERNAME:</label>
+            <input class="input" type="text" name="username" placeholder="Please enter your username here" required/>
+            <br>
+            <label class="label">PASSWORD:</label>
+            <input class="input" type="password" name="password" placeholder="Please enter your password here" required/>
+            <br>
+            <label class="label">Remember Me?</label>
+            <input type="checkbox" name="remember" value="yes">
+            <br>
+
+            <button type="submit" class="button">LOGIN</button>
+
+        </form>
+        
+        <p>Don't have an account? Click here:</p> <button class="button"><a href="/registration">REGISTRATION</a></button>
+        <hr class="hr">
+
+        <p><a href="/login-admin">Admin</a></p>
+       
+    </div>
+    
+<% include ../partials/footer %>
