@@ -18,4 +18,4 @@
 ![photos-github](photos-github/user-messages.png)
 ![photos-github](photos-github/user-trustedUser.png)
 
-![photos-github](photos-github/admin dashboard.png)
+![photos-github](photos-github/admin-dashboard.png)
